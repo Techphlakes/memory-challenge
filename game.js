@@ -7,7 +7,17 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
+// For laptops (key press to start)
 $(document).keypress(function() {
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+  }
+});
+
+// For phones (tap anywhere to start)
+$(document).on("click touchstart", function () {
   if (!started) {
     $("#level-title").text("Level " + level);
     nextSequence();
